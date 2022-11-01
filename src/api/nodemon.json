@@ -1,0 +1,6 @@
+{
+	"ignore": [".git", ".vscode", "dist", "node_modules"],
+	"watch": ["src"],
+	"ext": ".ts",
+	"exec": "npm run format && npm run build && npm run start"
+}
