@@ -16,9 +16,6 @@
 			"@models/*": ["models/*"],
 			"@models": ["models/index"],
 
-			"@structs/*": ["database/structs/*"],
-			"@structs": ["database/structs/index"],
-
 			"@utils/*": ["utils/*"],
 			"@utils": ["utils/index"],
 
