@@ -1,0 +1,189 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+enum Role {
+    ADMIN
+    SUPERINTENDENT
+    SUPERVISOR
+    SEARCHER
+    VIEWER
+}
+
+enum DeviceType {
+    PEER
+    HOST
+    UNKNOWN
+}
+
+enum LogType {
+    UPDATE
+    INFO
+    WARNING
+    ERROR
+    FATAL
+}
+
+model Image {
+    id         Int      @id @default(autoincrement())
+    filename   String
+    filepath   String
+    mimetype   String
+    size       Int
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+
+    User       User[]
+    Asset      Asset[]
+    Room       Room[]
+    Laboratory Laboratory[]
+    Building   Building[]
+}
+
+model User {
+    uuid       String   @id @default(uuid())
+    username   String?
+    email      String   @unique
+    password   String
+    role       Role     @default(VIEWER)
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+
+    Image   Image? @relation(fields: [ImageId], references: [id], onDelete: SetNull)
+    ImageId Int?
+
+    Logs         UserLog[]
+    Rooms        Room[]
+    Laboratories Laboratory[]
+    Buildings    Building[]
+}
+
+model Room {
+    uuid        String   @id @default(uuid())
+    active      Boolean  @default(true)
+    identifier  String
+    description String?
+    created_at  DateTime @default(now())
+    updated_at  DateTime @updatedAt
+
+    Image   Image? @relation(fields: [ImageId], references: [id], onDelete: SetNull)
+    ImageId Int?
+
+    Laboratory     Laboratory? @relation(fields: [LaboratoryUuid], references: [uuid], onDelete: SetNull)
+    LaboratoryUuid String?
+
+    Devices        Device[]
+    DevicesHistory DeviceLocation[]
+    Users          User[]
+}
+
+model Laboratory {
+    uuid        String   @id @default(uuid())
+    active      Boolean  @default(true)
+    identifier  String
+    description String?
+    created_at  DateTime @default(now())
+    updated_at  DateTime @updatedAt
+
+    Image   Image? @relation(fields: [ImageId], references: [id], onDelete: SetNull)
+    ImageId Int?
+
+    Building     Building? @relation(fields: [BuildingUuid], references: [uuid], onDelete: SetNull)
+    BuildingUuid String?
+
+    User     User?   @relation(fields: [userUuid], references: [uuid])
+    userUuid String?
+
+    Rooms Room[]
+}
+
+model Building {
+    uuid        String   @id @default(uuid())
+    active      Boolean  @default(true)
+    identifier  String
+    description String?
+    created_at  DateTime @default(now())
+    updated_at  DateTime @updatedAt
+
+    Image   Image? @relation(fields: [ImageId], references: [id], onDelete: SetNull)
+    ImageId Int?
+
+    User     User?   @relation(fields: [userUuid], references: [uuid])
+    userUuid String?
+
+    Laboratories Laboratory[]
+}
+
+model Asset {
+    uuid        String   @id @default(uuid())
+    active      Boolean  @default(true)
+    identifier  String
+    description String?
+    created_at  DateTime @default(now())
+    updated_at  DateTime @updatedAt
+
+    Image   Image? @relation(fields: [ImageId], references: [id], onDelete: SetNull)
+    ImageId Int?
+
+    Devices Device[]
+}
+
+model Device {
+    uuid          String     @id @default(uuid())
+    active        Boolean    @default(true)
+    identifier    BigInt     @unique
+    macaddress    String     @unique
+    type          DeviceType @default(UNKNOWN)
+    battery_level Int?
+    temperature   Float?
+    last_seen     DateTime?
+    created_at    DateTime   @default(now())
+    updated_at    DateTime   @updatedAt
+
+    Room     Room?   @relation(fields: [RoomUuid], references: [uuid], onDelete: SetNull)
+    RoomUuid String?
+
+    Logs         DeviceLog[]
+    RoomsHistory DeviceLocation[]
+    Assets       Asset[]
+}
+
+model DeviceLog {
+    id         BigInt   @id @default(autoincrement())
+    type       LogType
+    message    String
+    created_at DateTime @default(now())
+
+    Device     Device @relation(fields: [DeviceUuid], references: [uuid], onDelete: Cascade)
+    DeviceUuid String
+}
+
+model DeviceLocation {
+    id         BigInt   @id @default(autoincrement())
+    created_at DateTime @default(now())
+
+    Device     Device @relation(fields: [DeviceUuid], references: [uuid], onDelete: Cascade)
+    DeviceUuid String
+
+    Room     Room   @relation(fields: [RoomUuid], references: [uuid], onDelete: Cascade)
+    RoomUuid String
+}
+
+model UserLog {
+    id          BigInt   @id @default(autoincrement())
+    description String
+    ip          String
+    user_agent  String
+    created_at  DateTime @default(now())
+
+    User     User   @relation(fields: [UserUuid], references: [uuid], onDelete: Cascade)
+    UserUuid String
+}
