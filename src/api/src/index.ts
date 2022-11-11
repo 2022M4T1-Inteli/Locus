@@ -1,25 +1,39 @@
-import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import cors from 'cors';
-import helmet from 'helmet';
-import morgan from 'morgan';
-import rateLimit from 'express-rate-limit';
+
+import ConsoleUtils from '@utils/console.util';
+import SecurityMiddleware from '@middlewares/express/security.middleware';
+import DebugMiddleware from '@middlewares/express/debug.middleware';
+import PerformanceMiddleware from '@middlewares/express/performance.middleware';
+import ParserMiddleware from '@middlewares/express/parser.middleware';
+
+import ExpressService from '@services/express.service';
+import HttpService from '@services/http.service';
+import SocketService from '@services/socket.service';
+
+ConsoleUtils.addTimeOnConsole();
 
 dotenv.config();
 
-const app: Express = express();
-const port = process.env.PORT;
+const port: number = parseInt(process.env.API_PORT || '3131');
+const host: string = process.env.API_HOST || 'localhost';
 
-app.use(cors({ origin: process.env.CORS_ORIGIN }));
-app.use(helmet());
-app.use(express.json());
-app.use(morgan('dev'));
-app.use(rateLimit({ windowMs: 5 * 60 * 1000, max: 100 }));
+const app = new ExpressService(port);
 
-app.get('/', (req: Request, res: Response) => {
-	res.send('Ok');
-});
+app.addMiddleware(
+	SecurityMiddleware,
+	PerformanceMiddleware,
+	DebugMiddleware,
+	ParserMiddleware,
+);
 
-const server = app.listen(port, () => {
-	console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+app.addRouter();
+
+const http = new HttpService(port, host, app.getApp());
+
+const socket = new SocketService(http.getServer());
+
+socket.addMiddleware();
+
+socket.addListener();
+
+http.listen();
