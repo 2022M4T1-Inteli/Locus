@@ -7,7 +7,11 @@ import { Middleware } from '@middlewares/express';
 class SecurityMiddleware extends Middleware {
 	setup(app: Express): void {
 		app.use(cors({ origin: process.env.API_CORS_ORIGIN }));
-		app.use(helmet());
+		app.use(
+			helmet({
+				xssFilter: false,
+			}),
+		);
 		app.use(
 			rateLimit({
 				windowMs: 1 * 60 * 1000,
@@ -16,7 +20,10 @@ class SecurityMiddleware extends Middleware {
 				legacyHeaders: false,
 			}),
 		);
-		app.disable('x-powered-by');
+		app.use((req, res, next) => {
+			res.setHeader('X-XSS-Protection', '1');
+			next();
+		});
 	}
 }
 
