@@ -21,7 +21,19 @@
 		"files.exclude": {
 			"dist": true,
 			"src": true,
-			"prisma": true
-		}
+			"prisma": true,
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/.git/objects/**": true,
+			"**/node_modules": true
+		},
+		"[prisma]": {
+			"editor.defaultFormatter": "Prisma.prisma"
+		},
+		"conventionalCommits.scopes": ["api-workspace", "api", "database"]
 	}
 }
