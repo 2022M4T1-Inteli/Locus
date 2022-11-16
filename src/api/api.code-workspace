@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"name": "dist",
+			"path": "dist"
+		},
+		{
+			"name": "prisma",
+			"path": "prisma"
+		},
+		{
+			"name": "src",
+			"path": "src"
+		},
+		{
+			"path": ".",
+			"name": "root"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"dist": true,
+			"src": true,
+			"prisma": true
+		}
+	}
+}
