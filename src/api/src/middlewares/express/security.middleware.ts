@@ -10,8 +10,8 @@ class SecurityMiddleware extends Middleware {
 		app.use(helmet());
 		app.use(
 			rateLimit({
-				windowMs: 5 * 60 * 1000,
-				max: 100,
+				windowMs: 1 * 60 * 1000,
+				max: 90,
 				standardHeaders: false,
 				legacyHeaders: false,
 			}),
