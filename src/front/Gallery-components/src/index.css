@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Sans+Pro:wght@600;700&display=swap');
+
+:root {
+  font-family: 'Inter';
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #141414;
+  display: flex;
+  align-items: space-between;
+}
+
+body {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
