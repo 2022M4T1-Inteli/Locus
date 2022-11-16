@@ -1,6 +1,6 @@
-import "./app.css"
+import "./navbar.css"
 
-function App({Prédio}) {
+export function navbar({Prédio}) {
   return (
 
     <div className="navbar">
@@ -13,5 +13,3 @@ function App({Prédio}) {
     </div>
   )
 }
-
-export default App
