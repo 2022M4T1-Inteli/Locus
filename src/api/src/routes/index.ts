@@ -1,7 +1,7 @@
 import { Router, Express } from 'express';
 import { RouteMiddleware } from '@middlewares/express';
 
-export default abstract class Route {
+export default class Route {
 	public router: Router;
 	public root_path: string = '/api';
 
@@ -15,8 +15,8 @@ export default abstract class Route {
 	}
 
 	public addEndpoint(
-		endpoint: string,
 		method: 'get' | 'post' | 'put' | 'delete',
+		endpoint: string,
 		middleware: RouteMiddleware[],
 		handler: (req: any, res: any) => any,
 	): void {
