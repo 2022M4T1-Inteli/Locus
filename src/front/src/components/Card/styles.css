@@ -85,9 +85,9 @@ margin-right: 50px;
   margin-right: 40px;
 } */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Sans+Pro:wght@600;700&display=swap');
+
 .Model > h3 {
   margin-top: 1rem;
-  margin-bottom: ;
   font-size: 2rem;
 }
 .App {
@@ -110,16 +110,48 @@ margin-right: 50px;
   display: flex;
   flex-direction: row;
   width: 100%;
+
 }
 
 .Top > h1 {
+  margin-top: 1rem;
   margin-right: 2rem;
+  margin-bottom: 1.7rem;
 }
 
 .Search {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
+  padding: 5px 20px;
+  background-color: #252525;
+  text-decoration-color: #7A7A7A;
+  width: 40%;
+  height: 50px;
+  margin: 0.5rem;
+  border-radius: 4px;
+  position: relative;
+  /* background-color: rgba(255,255,255,0.3); */
+  transition: 0.3s all;
+}
+
+.Search:hover {
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+.Search > i {
+  background-color: #252525;
+  margin-right: 14px;
+}
+
+.Search > input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: #252525;
+  text-decoration-color: #fff;
 }
 
 .Card {
