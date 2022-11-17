@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Sans+Pro:wght@600;700&display=swap');
-
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0;
   padding: 2rem;
@@ -85,15 +83,72 @@ margin-right: 50px;
 
 #root .App .Card .Status h4{
   margin-right: 40px;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Sans+Pro:wght@600;700&display=swap');
+.Model > h3 {
+  margin-top: 1rem;
+  margin-bottom: ;
+  font-size: 2rem;
+}
+.App {
+  min-width: 100%;
 }
 
+.Layout {
+  width: 100%;
+}
 
-.card {
-  display: inline-block;
-  max-width: 252px;
+.Status {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.Top > h1 {
+  margin-right: 2rem;
+}
+
+.Search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Card {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  /* max-width: 252px; */
   height: auto;
-  width: 252px;
+  width: 100%;
   border-radius : 20px;
   background-color: rgba(0, 0, 0, 1);
   padding-bottom: 30px;
+}
+
+.grad {
+  font-size: 2rem;
+  margin: 0;
+  width: fit-content;
+  background: -webkit-linear-gradient(235deg, rgba(237,186,255,1) 0%, rgba(197,222,255,1) 50%, rgba(161,255,255,1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Status > h4 {
+  font-size: 1rem;
+  opacity: 0.5;
+}
+
+.DeviceBox {
+  padding: 1.5rem;
+  border: 1px solid white;
 }

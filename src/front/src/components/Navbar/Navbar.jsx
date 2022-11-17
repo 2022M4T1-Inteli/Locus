@@ -1,6 +1,6 @@
 import "./navbar.css"
 
-function navbar({Prédio}) {
+export function navbar({Prédio}) {
   return (
 
     <div className="navbar">
@@ -13,7 +13,5 @@ function navbar({Prédio}) {
     </div>
   )
 }
-
-export {navbar}
 
 
