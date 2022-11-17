@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:display=swap');
+
+*{
+    background-color: black;
+}
+
+.navbar{
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 0px;
+    position: absolute;
+    width: 570px;
+    height: 41px;
+}
+
+button{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #7A7A7A;
+    font-weight: 600;
+    width: 95px;
+    height: 41px;
+    border-radius: 10px;
+}
+
+button:active, button:focus  {
+    background: linear-gradient(225deg, #EDBAFF 0%, #A1FFFF 100%);
+    color: black;
+  }
