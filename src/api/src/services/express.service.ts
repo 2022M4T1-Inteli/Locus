@@ -1,5 +1,6 @@
 import express, { Express } from 'express';
-import { Middleware } from '@middlewares/express';
+import { Middleware, ErrorMiddleware } from '@middlewares/express';
+import Route from '@routes';
 import colors from 'colors';
 
 export default class ExpressService {
@@ -28,12 +29,41 @@ export default class ExpressService {
 		});
 	}
 
-	addRouter(...routers: any[]): void {
-		routers.forEach((router) => {
-			this.app.use(router);
+	addErrorMiddleware(...middlewares: ErrorMiddleware[]): void {
+		middlewares.forEach((middleware) => {
+			middleware.setup(this.app);
 			console.log(
-				colors.green(`Router ${router.constructor.name} added...`),
+				colors.green(
+					`Error Middleware ${middleware.constructor.name} added...`,
+				),
 			);
+		});
+	}
+
+	addRouter(...routers: Route[]): void {
+		routers.forEach((router) => {
+			router.setup(this.app);
+			console.log(
+				colors.green(`Router of '${router.root_path}' added...`),
+			);
+		});
+	}
+
+	addRouterOrMiddleware(...routers: (Route | Middleware)[]): void {
+		routers.forEach((router) => {
+			if (router instanceof Route) {
+				router.setup(this.app);
+				console.log(
+					colors.green(`Router of '${router.root_path}' added...`),
+				);
+			} else if (router instanceof Middleware) {
+				router.setup(this.app);
+				console.log(
+					colors.green(
+						`Middleware ${router.constructor.name} added...`,
+					),
+				);
+			}
 		});
 	}
 }

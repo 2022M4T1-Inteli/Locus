@@ -1,4 +1,4 @@
-import { Router, Express } from 'express';
+import { Router, Express, Request, Response, NextFunction } from 'express';
 import { RouteMiddleware } from '@middlewares/express';
 
 export default class Route {
@@ -18,12 +18,24 @@ export default class Route {
 		method: 'get' | 'post' | 'put' | 'delete',
 		endpoint: string,
 		middleware: RouteMiddleware[],
-		handler: (req: any, res: any) => any,
+		handler: (req: Request, res: Response) => void,
 	): void {
+		let non_throw_handler = async (
+			req: Request,
+			res: Response,
+			next: NextFunction,
+		) => {
+			try {
+				await handler(req, res);
+			} catch (e) {
+				next(e);
+			}
+		};
+
 		this.router[method](
 			endpoint,
 			...middleware.map((m) => m.callback),
-			handler,
+			non_throw_handler,
 		);
 	}
 }

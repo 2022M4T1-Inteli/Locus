@@ -15,7 +15,7 @@ export default abstract class Repository<ModelType> {
 		return user ? new this.model(user) : null;
 	}
 
-	async findUnique(query: string): Promise<ModelType | null> {
+	async findUnique(query: any): Promise<ModelType | null> {
 		const user = await this.table.findUnique(query);
 
 		return user ? new this.model(user) : null;

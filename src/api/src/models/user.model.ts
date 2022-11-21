@@ -2,6 +2,9 @@ import { tables, enums } from '@database';
 import type { User as UserSchema } from '@prisma/client';
 import Model from '@models';
 import Room from '@models/room.model';
+import Laboratory from './laboratory.model';
+import Building from './building.model';
+import Image from './image.model';
 import UserLog from '@models/user-log.model';
 
 export default class User extends Model<UserSchema> {
@@ -55,10 +58,30 @@ export default class User extends Model<UserSchema> {
 	}
 
 	async getRooms(): Promise<Room[] | null> {
-		return await this.getUniqueRelation('Rooms', Room);
+		return await this.getManyRelation('Rooms', Room);
+	}
+
+	async getLaboratories(): Promise<Laboratory[] | null> {
+		return await this.getManyRelation('Laboratories', Laboratory);
+	}
+
+	async getBuildings(): Promise<Building[] | null> {
+		return await this.getManyRelation('Buildings', Building);
+	}
+
+	async getPermitedLocations(): Promise<(Room | Laboratory | Building)[]> {
+		const rooms = (await this.getRooms()) || [];
+		const laboratories = (await this.getLaboratories()) || [];
+		const buildings = (await this.getBuildings()) || [];
+
+		return [...rooms, ...laboratories, ...buildings];
 	}
 
 	async getLogs(): Promise<UserLog[] | null> {
-		return await this.getUniqueRelation('Logs', UserLog);
+		return await this.getManyRelation('Logs', UserLog);
+	}
+
+	async getImage(): Promise<Image | null> {
+		return await this.getUniqueRelation('Image', Image);
 	}
 }

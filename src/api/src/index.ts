@@ -5,10 +5,14 @@ import SecurityMiddleware from '@middlewares/express/security.middleware';
 import DebugMiddleware from '@middlewares/express/debug.middleware';
 import PerformanceMiddleware from '@middlewares/express/performance.middleware';
 import ParserMiddleware from '@middlewares/express/parser.middleware';
+import SessionMiddleware from '@middlewares/express/session.middleware';
+import ErrorHandlerMiddleware from '@middlewares/express/error.middleware';
 
 import ExpressService from '@services/express.service';
 import HttpService from '@services/http.service';
 import SocketService from '@services/socket.service';
+
+import AuthenticationRouter from '@routes/authentication.route';
 
 ConsoleUtils.addTimeOnConsole();
 
@@ -24,9 +28,12 @@ app.addMiddleware(
 	PerformanceMiddleware,
 	DebugMiddleware,
 	ParserMiddleware,
+	SessionMiddleware,
 );
 
-app.addRouter();
+app.addRouter(AuthenticationRouter);
+
+app.addErrorMiddleware(ErrorHandlerMiddleware);
 
 const http = new HttpService(port, host, app.getApp());
 

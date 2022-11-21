@@ -8,6 +8,7 @@
 		"start": "npx tsc-alias && node dist/index.js",
 		"format": "npx prettier --write src/",
 		"migrate": "npx prisma migrate dev --name database_update",
+		"seed": "npx tsc && npx tsc-alias && node dist/database/seeds/index.js",
 		"dev": "nodemon"
 	},
 	"keywords": [],
@@ -16,6 +17,7 @@
 	"dependencies": {
 		"@base2/pretty-print-object": "^1.0.2",
 		"@prisma/client": "^4.5.0",
+		"bcrypt": "^5.1.0",
 		"bull": "^4.10.1",
 		"colors": "^1.4.0",
 		"compression": "^1.7.4",
@@ -36,6 +38,7 @@
 		"socket.io": "^4.5.3"
 	},
 	"devDependencies": {
+		"@types/bcrypt": "^5.0.0",
 		"@types/bull": "^4.10.0",
 		"@types/compression": "^1.7.2",
 		"@types/connect-redis": "^0.0.19",
