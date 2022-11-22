@@ -9,14 +9,13 @@
     gap: 24px;
     align-items: flex-start;
     padding: 0px;
-    position: absolute;
     width: 570px;
     height: 41px;
 }
 
 button{
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #7A7A7A;
     font-weight: 600;
     width: 95px;
