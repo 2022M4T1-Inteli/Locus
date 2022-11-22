@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:display=swap');
+
+*{
+    background-color: black;
+}
+
+.text{
+    font-family: 'Inter', normal;
+    font-size: 1.75rem;
+    color: #FFFF;
+    font-weight: 600;
+    width: 148px;
+    height: 34px;
+    display: flex;
+}
