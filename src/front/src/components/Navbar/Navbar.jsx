@@ -1,4 +1,4 @@
-import "./navbar.css"
+import "./Navbar.css"
 
 export function Navbar({Prédio}) {
   return (
