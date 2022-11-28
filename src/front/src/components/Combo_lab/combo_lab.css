@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:display=swap');
+
+.layout-lab {
+    display: grid;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    grid-template-columns: repeat(3, auto);
+}
+
+.card-lab {
+    height: 20.5625rem;
+    background: #252525;
+    border-radius: 1.25rem;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin-right: 1.625rem;
+    margin-bottom: 1.75rem;
+    align-items: center;
+}
+
+.name-lab {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.3125rem;
+    color: #FFFFFF;
+    position: absolute;
+    left: 5.78%;
+    top: 1rem;
+} 
+
+.content-lab {
+    background: linear-gradient(225deg, #EDBAFF 0%, #A1FFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    align-self: center;
+    margin: 0 0 0 0;
+}
+
+.sub-title-content-lab {
+    font-weight: 400;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    color: #7A7A7A;
+    align-self: center;
+}
+
+.content-card {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    max-height: 50%;
+}
+
+
