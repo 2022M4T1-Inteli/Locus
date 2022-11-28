@@ -1,7 +1,7 @@
 import './toggle.css'
 import {useState} from 'react'
 
-function Toggle ({key}) {
+function Toggle ({number}) {
 
     const [stateToggle, setState] = useState(["toggle-button-lab-enable", "toggle-lab-enable"])
 
@@ -11,7 +11,7 @@ function Toggle ({key}) {
     }
 
     return (
-    <div className={stateToggle[1]} key={`${key}`} onClick={
+    <div className={stateToggle[1]} key={`${number}`} onClick={
         ()=> {
             eventToggle(stateToggle)
         }}>
