@@ -16,3 +16,8 @@
 body {
   width: 100vw;
 }
+
+.caixapreta{
+  border: 3rem solid red;
+  border-color: 1px solid red;
+}
