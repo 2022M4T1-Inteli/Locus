@@ -1,13 +1,17 @@
 .justify{
-    align-self: flex-end;
+    width: fit-content;
 }
 
 select{
+    font-family: "Inter", normal;
     background-color: #252525; 
     color: #7A7A7A;
-    width: 150px;
-    height: 41px;
+    width: 10rem;
+    padding: 0.7rem;
+    /* width: 150px;
+    height: 41px; */
     border-radius: 10px;
+    cursor: pointer;
 }
 
 option{
