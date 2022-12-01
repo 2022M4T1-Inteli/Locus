@@ -23,6 +23,7 @@ button{
     width: 95px;
     height: 41px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 button:active, button:focus  {
