@@ -14,10 +14,13 @@ function Combo_lab() {
           {
           countCards.map((i) => {
             return (
-            <div className="card-lab" key={`${i}`}>
+            <div className="card-lab" key={`${i}`} >
               <h1 className='name-lab' > {`Laboratório ${nameLab[contador]}`} </h1>
               <Toggle number={`${i}`} />
-            <div className='content-card'> 
+            <div className='content-card' onClick={ () => {
+              console.log("Troca de página, vai ser um tal laboratório e mostrando todos os eps")
+            }
+            }> 
               <h1 className='content-lab'> 
               {`${countDevices[contador]}`}
                </h1>
