@@ -12,13 +12,17 @@ export function Card() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
+    
     <div className="App">
+      {modalOpen && <Modal setOpenModal={setModalOpen} />}
       <div className="Layout">
         <div className="Top">
-          <h1>Dispositivos</h1>
+          <div className="container-search">
+          <h1 className="title-top">Dispositivos</h1>
           <div className="Search">
             <i className="material-icons">search</i>
             <input type="text" placeholder="Pesquise por dispositivo" />
+          </div>
           </div>
           <button
             className="button-modal"
@@ -27,7 +31,7 @@ export function Card() {
             + Dispositivo
           </button>
 
-          {modalOpen && <Modal setOpenModal={setModalOpen} />}
+          
         </div>
         <div className="Card">
           {count.map((item) => {

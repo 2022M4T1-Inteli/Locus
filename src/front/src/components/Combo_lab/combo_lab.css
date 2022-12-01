@@ -6,6 +6,7 @@
     width: 100%;
     height: auto;
     grid-template-columns: repeat(3, auto);
+    left: 0;
 }
 
 .card-lab {
@@ -28,6 +29,7 @@
     position: absolute;
     left: 5.78%;
     top: 1rem;
+    background: transparent;
 } 
 
 .content-lab {
@@ -47,6 +49,7 @@
     font-family: 'Inter', sans-serif;
     color: #7A7A7A;
     align-self: center;
+    background: transparent;
 }
 
 .content-card {
@@ -54,6 +57,10 @@
     display: flex;
     flex-direction: column;
     max-height: 50%;
+    background: transparent;
 }
 
+.auxiliar-lab {
+    display: none;
+}
 

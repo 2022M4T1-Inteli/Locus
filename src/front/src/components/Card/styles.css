@@ -24,13 +24,18 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  align-items: center;
+    justify-content: space-between;
 }
 
-.Top > h1 {
-  margin-top: 1.5rem;
+.title-top {
   margin-right: 2rem;
-  margin-bottom: 2rem;
   font-size: 1.3125rem;
+}
+.container-search{
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .Search {
@@ -46,6 +51,7 @@
   border-radius: 4px;
   position: relative;
   transition: 0.3s all;
+  max-width: 500px;
 }
 
 .Search:hover {
@@ -68,8 +74,6 @@
 
 .button-modal{
   width: fit-content;
-  margin-left: 20rem;
-  margin-top: 1rem;
   width: 200px; 
   height: 40px;
   cursor: pointer;
