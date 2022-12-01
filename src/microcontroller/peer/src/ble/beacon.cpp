@@ -1,10 +1,17 @@
 #include "ble/beacon.hpp"
 
+#include "define/ble.hpp"
+#include "environment/battery.hpp"
 #include "environment/system.hpp"
 
-#define SERVICE_UUID "ed3eef7c-441d-46af-a13f-29f9e4fb7e3a"
-#define CHARACTERISTIC_UUID "6b5f1a66-7ffd-42dd-a1d5-96a9fb835d13"
-#define NAME "ESP32PEER_1"
+#define NAME "LOCUS_ESP32"
+
+void BLECallbacks::onConnect(BLEServer* pServer) { Console::info("BLE connected\n"); }
+
+void BLECallbacks::onDisconnect(BLEServer* pServer) {
+	Console::info("BLE disconnected\n");
+	pServer->startAdvertising();
+}
 
 Beacon* Beacon::m_pInstance = nullptr;
 
@@ -16,21 +23,29 @@ Beacon* Beacon::getInstance() {
 	return Beacon::m_pInstance;
 }
 
-Beacon::Beacon() {
+void Beacon::setup() {
 	Console::info("Initializing BLE Beacon with name: %s\n", NAME);
 	BLEDevice::init(NAME);
+	BLEDevice::setPower(ESP_PWR_LVL_N12);
 
 	this->m_pServer = BLEDevice::createServer();
-	this->m_pService = this->m_pServer->createService(SERVICE_UUID);
-	this->m_pCharacteristic = this->m_pService->createCharacteristic(
-		CHARACTERISTIC_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
+	this->m_pServer->setCallbacks(new BLECallbacks());
+	this->m_pService = this->m_pServer->createService(LOCUS_SERVICE_UUID);
+	this->m_pCharacteristicBattery =
+		this->m_pService->createCharacteristic(BATTERY_CHARACTERISTIC_UUID, BLECharacteristic::PROPERTY_READ);
 
-	this->m_pCharacteristic->setValue("100");
+	this->m_pCharacteristicResquest = this->m_pService->createCharacteristic(
+		REQUEST_CHARACTERISTIC_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
+
+	float batteryLevel = Battery::getBatteryPercentage();
+
+	this->m_pCharacteristicBattery->setValue(batteryLevel);
+	this->m_pCharacteristicResquest->setValue("0");
 
 	this->m_pService->start();
 
 	this->m_pAdvertising = this->m_pServer->getAdvertising();
-	this->m_pAdvertising->addServiceUUID(SERVICE_UUID);
+	this->m_pAdvertising->addServiceUUID(LOCUS_SERVICE_UUID);
 	this->m_pAdvertising->setScanResponse(true);
 	this->m_pAdvertising->setMinPreferred(0x06);
 	this->m_pAdvertising->setMinPreferred(0x12);
@@ -43,8 +58,13 @@ Beacon::~Beacon() {
 
 	delete this->m_pServer;
 	delete this->m_pService;
-	delete this->m_pCharacteristic;
+	delete this->m_pCharacteristicBattery;
+	delete this->m_pCharacteristicResquest;
 	delete this->m_pAdvertising;
 }
 
-void Beacon::setCharacteristicValue(String value) { this->m_pCharacteristic->setValue(value.c_str()); }
+void Beacon::setBatteryValue(float value) { this->m_pCharacteristicBattery->setValue(value); }
+
+String Beacon::getResquestValue() { return this->m_pCharacteristicResquest->getValue().c_str(); }
+
+void Beacon::resetResquestValue() { this->m_pCharacteristicResquest->setValue("0"); }

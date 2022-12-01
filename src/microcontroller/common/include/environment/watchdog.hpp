@@ -12,7 +12,7 @@
 
 #include "io/console.hpp"
 
-#define WDT_TIMEOUT 5000  // ms
+#define WDT_TIMEOUT 10000  // ms
 
 class Watchdog {
 public:
