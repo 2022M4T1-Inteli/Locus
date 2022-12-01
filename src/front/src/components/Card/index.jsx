@@ -2,11 +2,14 @@ import React from "react";
 import { useState } from "react";
 import "./styles.css";
 import Monitor from "../../assets/Monitor";
+import { Modal } from "../Modal/Modal";
 
 export function Card() {
   const [count, setCount] = useState([
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
   ]);
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div className="App">
@@ -17,6 +20,14 @@ export function Card() {
             <i className="material-icons">search</i>
             <input type="text" placeholder="Pesquise por dispositivo" />
           </div>
+          <button
+            className="button-modal"
+            onClick={() => {
+              setModalOpen(true);}}>
+            + Dispositivo
+          </button>
+
+          {modalOpen && <Modal setOpenModal={setModalOpen} />}
         </div>
         <div className="Card">
           {count.map((item) => {

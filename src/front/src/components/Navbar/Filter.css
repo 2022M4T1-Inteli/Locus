@@ -1,0 +1,18 @@
+.justify{
+    align-self: flex-end;
+}
+
+select{
+    background-color: #252525; 
+    color: #7A7A7A;
+    width: 150px;
+    height: 41px;
+    border-radius: 10px;
+}
+
+option{
+    text-align: center;
+    background-color: #AAAAAA; 
+    color: #333333;
+}
+

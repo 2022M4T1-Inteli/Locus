@@ -1,4 +1,5 @@
-import "./navbar.css"
+import "./Navbar.css"
+import {Filter} from './Filter'
 
 export function Navbar({Prédio}) {
   return (
@@ -10,6 +11,7 @@ export function Navbar({Prédio}) {
             <button>{elem}</button>
           </div>)
       })}
+      <Filter></Filter>
     </div>
   )
 }
