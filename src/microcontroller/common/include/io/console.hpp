@@ -3,7 +3,9 @@
 
 class Console {
 public:
-	static void printf(const char* format, const char* type, va_list args) {
+	static void setup() { Serial.begin(115200); }
+
+	static void _printf(const char* format, const char* type, va_list args) {
 		if (type != NULL) {
 			Serial.printf("[%s] ", type);
 		}
@@ -13,31 +15,38 @@ public:
 		va_end(args);
 	}
 
+	static void printf(const char* format, ...) {
+		va_list args;
+		va_start(args, format);
+
+		Console::_printf(format, NULL, args);
+	}
+
 	static void info(const char* format, ...) {
 		va_list args;
 		va_start(args, format);
-		Console::printf(format, "INFO", args);
+		Console::_printf(format, "INFO", args);
 		va_end(args);
 	}
 
 	static void warn(const char* format, ...) {
 		va_list args;
 		va_start(args, format);
-		Console::printf(format, "WARN", args);
+		Console::_printf(format, "WARN", args);
 		va_end(args);
 	}
 
 	static void error(const char* format, ...) {
 		va_list args;
 		va_start(args, format);
-		Console::printf(format, "ERROR", args);
+		Console::_printf(format, "ERROR", args);
 		va_end(args);
 	}
 
 	static void debug(const char* format, ...) {
 		va_list args;
 		va_start(args, format);
-		Console::printf(format, "DEBUG", args);
+		Console::_printf(format, "DEBUG", args);
 		va_end(args);
 	}
 };
