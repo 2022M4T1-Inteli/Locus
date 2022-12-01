@@ -4,6 +4,11 @@
     background-color: black;
 }
 
+.display{
+    display: flex;
+    justify-content: space-between;
+}
+
 .text{
     margin-top: 2rem;
     font-family: 'Inter', normal;
@@ -13,4 +18,29 @@
     width: 148px;
     height: 34px;
     display: flex;
+}
+
+.userBloc{
+    display: flex;
+    margin-right: 3rem;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.imagem{
+    width: 40px;
+    height: 40px;
+}
+
+.profile{
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+}
+
+.nome{
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
 }
