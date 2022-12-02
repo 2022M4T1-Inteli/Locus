@@ -1,4 +1,4 @@
-.toggle-lab-enable {
+.toggleLabEnable {
     position: absolute;
     width: 2.18rem;
     height: 1.125rem;
@@ -8,7 +8,7 @@
     border-radius: 1.25rem;
 }
 
-.toggle-button-lab-enable {
+.toggleButtonLabEnable {
     position: absolute;
     height: 0.70rem;
     background-color: #252525;
@@ -19,7 +19,7 @@
     border-radius: 50%;
 }
 
-.toggle-lab-disabled {
+.toggleLabDisabled {
     position: absolute;
     width: 2.18rem;
     height: 1.125rem;
@@ -29,7 +29,7 @@
     border-radius: 1.25rem;
 }
 
-.toggle-button-lab-disabled {
+.toggleButtonLabDisabled {
     position: absolute;
     height: 0.70rem;
     background-color: #252525;

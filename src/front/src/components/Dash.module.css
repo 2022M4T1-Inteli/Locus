@@ -1,46 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:display=swap');
-
-*{
-    background-color: black;
-}
-
-.display{
+.display {
     display: flex;
     justify-content: space-between;
 }
 
-.text{
+.text {
     margin-top: 2rem;
-    font-family: 'Inter', normal;
+    font-family: 'Inter', sans-serif;
     font-size: 1.75rem;
-    color: #FFFF;
+    color: #ffff;
     font-weight: 600;
+    display: inline-block;
+    text-align: center;
     width: 148px;
     height: 34px;
-    display: flex;
 }
 
-.userBloc{
+.userBlock {
     display: flex;
     margin-right: 3rem;
     gap: 1.5rem;
     align-items: center;
 }
 
-.imagem{
+.imagem {
     width: 40px;
     height: 40px;
 }
 
-.profile{
+.profile {
     border-radius: 50px;
     width: 40px;
     height: 40px;
 }
 
-.nome{
-    font-family: 'Inter';
+.nome {
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 14px;
-    color: #FFFFFF;
+    color: #ffffff;
 }

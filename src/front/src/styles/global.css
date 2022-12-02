@@ -1,0 +1,43 @@
+:root {
+  --gray-100: #7a7a7a;
+  --gray-300: #252525;
+  --white: #ffffff;
+  --grad-100: #edbaff;
+  --black-100: #1a1a1a;
+  --black-300: black;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.87);
+  display: flex;
+  align-items: space-between;
+  display: flex;
+  /* min-width: 100vw; */
+  min-height: 100vh;
+}
+
+* {
+  background-color: var(--black-300);
+}
+
+body {
+  background: var(--gray-900);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  width: 100vw;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "Inter", sans-serif;
+  font-weight: 1rem;
+  font-size: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
