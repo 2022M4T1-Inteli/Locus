@@ -6,7 +6,6 @@
     width: 100%;
     height: auto;
     grid-template-columns: repeat(3, auto);
-    left: 0;
 }
 
 .cardLab {
@@ -29,12 +28,7 @@
     position: absolute;
     left: 5.78%;
     top: 1rem;
-<<<<<<< HEAD:src/front/src/components/Combo_lab/combo_lab.css
-    background: transparent;
-} 
-=======
 }
->>>>>>> 0bfc891 (refactor(components): refactoring components and create routes.):src/front/src/components/Card.module.css
 
 .contentab {
     background: linear-gradient(225deg, #edbaff 0%, #a1ffff 100%);
@@ -54,7 +48,6 @@
     font-family: 'Inter', sans-serif;
     color: #7a7a7a;
     align-self: center;
-    background: transparent;
 }
 
 .contentCard {
@@ -62,13 +55,4 @@
     display: flex;
     flex-direction: column;
     max-height: 50%;
-    background: transparent;
 }
-<<<<<<< HEAD:src/front/src/components/Combo_lab/combo_lab.css
-
-.auxiliar-lab {
-    display: none;
-}
-
-=======
->>>>>>> 0bfc891 (refactor(components): refactoring components and create routes.):src/front/src/components/Card.module.css

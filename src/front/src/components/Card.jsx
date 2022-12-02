@@ -1,6 +1,4 @@
-import './Card.css';
 import { useState } from 'react';
-import Toggle from './Toggle';
 import styles from './Card.module.css';
 
 export function Card() {
@@ -18,7 +16,6 @@ export function Card() {
                             {' '}
                             {`Laboratório ${nameLab[contador]}`}{' '}
                         </h1>
-                        <Toggle number={`${i}`} />
                         <div className={styles.contentCard}>
                             <h1
                                 className={styles.contentLab}

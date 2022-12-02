@@ -8,25 +8,12 @@ export function Navbar({ buildings }) {
     useEffect(() => {
         const defaultFilter = 'Todos';
 
-        let filters = [defaultFilter, ...buildings];
-
-        setBuildingsFilters(filters);
+        setBuildingsFilters([defaultFilter, ...buildings]);
     });
-
     return (
         <div className={styles.navbar}>
             <div className={styles.divButton}>
                 {buildingsFilters.map((elem) => {
-                    if (elem === 'Todos') {
-                        return (
-                            <button
-                                className={[styles.button, 'active']}
-                                active
-                            >
-                                {elem}
-                            </button>
-                        );
-                    }
                     return <button className={styles.button}>{elem}</button>;
                 })}
             </div>

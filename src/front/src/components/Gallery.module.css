@@ -1,35 +1,34 @@
 .model > h3 {
     margin-top: 1.5rem;
-    font-size: 1.125rem;
-}
-.app {
-    min-width: 100%;
-}
-
-.layout {
-    width: 100%;
+    font-size: 1rem;
 }
 
 .status {
     display: flex;
     flex-direction: row;
     width: 100%;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
+}
+
+.button {
+    padding: 1rem;
+    margin: 2rem;
 }
 
 .top {
     display: flex;
     flex-direction: row;
-    width: 100%;
     align-items: center;
     justify-content: space-between;
+    margin: 1rem;
 }
 
 .titleTop {
     margin-right: 2rem;
-    font-size: 1.3125rem;
+    font-size: 1.2rem;
 }
+
 .containerSearch {
     display: flex;
     align-items: center;
@@ -40,14 +39,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
     padding: 5px 20px;
     background-color: var(--gray-300);
     width: 70%;
-    height: 4rem;
+    height: 2.25rem;
     margin: 0.5rem;
-    border-radius: 4px;
-    position: relative;
+    border-radius: 10px;
     transition: 0.3s all;
     max-width: 500px;
 }
@@ -65,9 +62,10 @@
 .search > input {
     border: none;
     outline: none;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 300;
     background-color: transparent;
-    color: aliceblue;
+    color: var(--white);
 }
 
 .buttonModal {
@@ -75,6 +73,7 @@
     width: 200px;
     height: 40px;
     cursor: pointer;
+    color: var(--white);
     background-color: -webkit-linear-gradient(
         rgba(237, 186, 255, 1) 0%,
         rgba(197, 222, 255, 1) 50%,
@@ -90,17 +89,17 @@
 .card {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    /* max-width: 252px; */
-    height: 250px;
+    height: 100%;
     width: 100%;
     color: var(--white);
-    border-radius: 20px;
-    background-color: var(--black-300);
+    border-radius: 10px;
     padding-bottom: 30px;
+    grid-gap: 1px;
+    background-color: var(--gray-200);
 }
 
 .gradient {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin: 0;
     width: fit-content;
     background: -webkit-linear-gradient(
@@ -114,16 +113,53 @@
     -webkit-text-fill-color: transparent;
 }
 
-.status > h4 {
-    font-size: 0.625rem;
+.status > div > h4 {
+    margin-top: 1rem;
+    font-size: 0.6rem;
     opacity: 0.5;
 }
 
 .deviceBox {
     padding: 1.5rem;
-    border: 1px solid white;
+    cursor: pointer;
+}
+
+.deviceBox:hover {
+    opacity: 0.8;
 }
 
 .box {
     margin: 1rem;
+}
+
+.batteryBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.bar {
+    width: 64px;
+    height: 5px;
+    border-radius: 8px;
+    background-image: linear-gradient(
+            90deg,
+            transparent,
+            transparent 50%,
+            black 50%,
+            black 100%
+        ),
+        linear-gradient(
+            to right,
+            rgba(237, 186, 255, 1) 0%,
+            rgba(197, 222, 255, 1) 50%,
+            rgba(161, 255, 255, 1) 100%
+        );
+    background-size: 10px 3px, 100% 3px;
+}
+
+.root {
+    width: 100%;
+    height: 100%;
 }

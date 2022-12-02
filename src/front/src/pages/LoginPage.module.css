@@ -1,0 +1,71 @@
+.title,
+.loginForm,
+.loginContainer,
+.loginInnerContainer,
+.root {
+    background-color: #252525;
+}
+
+.root {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loginContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginInnerContainer {
+    width: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.loginForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.loginFormButton {
+    width: 100%;
+    height: 42px;
+}
+
+.input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background-color: white;
+    margin-bottom: 4rem;
+}
+
+.input::placeholder {
+    color: #1a1a1a;
+}
+
+.title {
+    color: white;
+    font-size: 2rem;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 46px;
+    margin-bottom: 2rem;
+}

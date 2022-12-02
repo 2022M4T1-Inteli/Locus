@@ -1,41 +1,18 @@
 .display {
     display: flex;
     justify-content: space-between;
+    margin-inline: 1rem;
+    margin-top: 0.5rem;
 }
 
 .text {
-    margin-top: 2rem;
     font-family: 'Inter', sans-serif;
     font-size: 1.75rem;
     color: #ffff;
-    font-weight: 600;
-    display: inline-block;
     text-align: center;
-    width: 148px;
-    height: 34px;
+    padding-top: 5px;
 }
 
-.userBlock {
-    display: flex;
-    margin-right: 3rem;
-    gap: 1.5rem;
-    align-items: center;
-}
-
-.imagem {
-    width: 40px;
-    height: 40px;
-}
-
-.profile {
-    border-radius: 50px;
-    width: 40px;
-    height: 40px;
-}
-
-.nome {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    color: #ffffff;
+.help {
+    margin-top: 5px;
 }

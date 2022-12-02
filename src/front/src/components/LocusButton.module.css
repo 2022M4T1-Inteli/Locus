@@ -1,0 +1,21 @@
+.button {
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 6px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: var(--gray-300);
+    border-radius: 10px;
+    background-image: linear-gradient(
+        to right,
+        rgba(237, 186, 255, 1) 0%,
+        rgba(197, 222, 255, 1) 50%,
+        rgba(161, 255, 255, 1) 100%
+    );
+}
+
+.button:hover {
+    background-position: right center;
+}
