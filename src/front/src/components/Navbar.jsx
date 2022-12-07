@@ -17,13 +17,14 @@ export function Navbar({ buildings }) {
             document.getElementById(building).style.background = 'transparent'
         })
         document.getElementById(e).style.background = "linear-gradient(to right, " + "#edbaff" + ", " + "#a1ffff " + ")"
+        document.getElementById(e).style.color = "black";
     }
 
     return (
         <div className={styles.navbar}>
             <div className={styles.divButton}>
                 {buildingsFilters.map((elem) => {
-                    return <button id={elem} onClick={() => activation(elem)} className={styles.button}>{elem}</button>; /*typeof (elem) == "number" ? <label>Predio {elem}</label> : { elem }}*/
+                    return <button id={elem} onClick={() => activation(elem)} className={styles.button}>{elem}</button>;
                 })}
             </div>
             <div>
