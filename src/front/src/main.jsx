@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     { path: '/login', element: <LoginPage />, errorElement: <ErrorPage /> },
     {
         path: '/navbar',
-        element: <Navbar buildings={['Prédio 1', 'Prédio 2', 'Prédio 3']} />,
+        element: <Navbar buildings={[1, 2, 3]} />,
         errorElement: <ErrorPage />,
     },
     {
