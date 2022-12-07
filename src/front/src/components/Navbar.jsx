@@ -15,6 +15,7 @@ export function Navbar({ buildings }) {
     function activation(e) {
         buildingsFilters.map((building) => {
             document.getElementById(building).style.background = 'transparent'
+            document.getElementById(building).style.color = "#7a7a7a";
         })
         document.getElementById(e).style.background = "linear-gradient(to right, " + "#edbaff" + ", " + "#a1ffff " + ")"
         document.getElementById(e).style.color = "black";
