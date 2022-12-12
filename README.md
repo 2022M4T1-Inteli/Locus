@@ -29,6 +29,7 @@ Aplicação web para o rastreamento de ativos com foco de mitigar a problemátic
 **|-->** readme.md<br>
 **|-->** .gitignore<br>
 **|-->** .vscode<br>
+**|-->** license.txt<br>
 
 
 Dentre os arquivos presentes na raiz do projeto, definem-se:
@@ -42,6 +43,8 @@ Dentre os arquivos presentes na raiz do projeto, definem-se:
 **src**: nesta pasta encontra-se todo o código fonte dos embarcados, front-end e back-end.
 
 **.vscode**: nesta pasta está o arquivo que define como true a formatação do arquivo ao salvar.
+
+**license.txt**: arquivo que possui a licença.
 
 ## 💻 Configuração para Desenvolvimento
 
