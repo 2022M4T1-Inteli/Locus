@@ -19,7 +19,8 @@
 
 
 ## Descrição
-     Aplicação web para o rastreamento de ativos com foco de mitigar a problemática da Auditoria de ativos do IPT, visto que essa auditoria não é bem executada devido a falta de localização dos equipamentos, essa aplicação tem em sua principal feature um dashboard com a localização de todos os dipositivos com o ESP32-S3, placa acoplada em todos os ativos necessários, e por meio disso, a problemática será diminuida.
+
+Aplicação web para o rastreamento de ativos com foco de mitigar a problemática da Auditoria de ativos do IPT, visto que essa auditoria não é bem executada devido a falta de localização dos equipamentos, essa aplicação tem em sua principal feature um dashboard com a localização de todos os dipositivos com o ESP32-S3, placa acoplada em todos os ativos necessários, e por meio disso, a problemática será diminuida.
 
 ## 🛠 Estrutura de pastas
 
