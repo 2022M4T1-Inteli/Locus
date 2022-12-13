@@ -3,7 +3,7 @@
 .loginContainer,
 .loginInnerContainer,
 .root {
-    background-color: #252525;
+    background-color: var(--gray-300);
 }
 
 .root {
@@ -51,16 +51,16 @@
     width: 100%;
     padding: 12px 20px;
     border-radius: 10px;
-    background-color: white;
+    background-color: var(--white);
     margin-bottom: 4rem;
 }
 
 .input::placeholder {
-    color: #1a1a1a;
+    color: var(--black-100);
 }
 
 .title {
-    color: white;
+    color: var(--white);
     font-size: 2rem;
     font-family: 'Inter';
     font-style: normal;

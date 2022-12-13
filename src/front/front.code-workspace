@@ -1,12 +1,10 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"conventionalCommits.scopes": [
-			"components"
-		]
-	}
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "conventionalCommits.scopes": ["components", "integration"]
+    }
 }
