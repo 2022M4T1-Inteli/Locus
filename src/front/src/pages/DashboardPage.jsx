@@ -2,13 +2,14 @@ import { Dash } from '../components/Dash';
 import { Gallery } from '../components/Gallery';
 import { Navbar } from '../components/Navbar';
 import styles from './DashboardPage.module.css';
+import { SideBar } from '../components/SideBar.jsx';
 
 export default function DashboardPage() {
     return (
         <div className={styles.dashboardPage}>
-            <Dash />
+            <SideBar />
             <div className={styles.dashboardColPage}>
-                <Navbar buildings={['Prédio 1', 'Prédio 2', 'Prédio 3']} />
+                <Dash />
                 <Gallery />
             </div>
         </div>
