@@ -2,7 +2,6 @@ import { Banner } from '../components/Banner';
 import styles from './LoginPage.module.css';
 import { LocusButton } from '../components/LocusButton';
 import IconButton from '@mui/material/IconButton';
-import InputLabel from '@mui/material/InputLabel';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
