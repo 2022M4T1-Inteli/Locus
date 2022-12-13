@@ -205,7 +205,12 @@ const DeviceCard = ({ mac_str, battery_percent, last_activity }) => {
 
     return (
         <div className={styles.deviceBox}>
-            <img src={Device} alt="Device image" width={40} />
+            <img
+                src={Device}
+                alt="Device image"
+                width={40}
+                className={styles.imageDeviceBox}
+            />
 
             <div className={styles.status}>
                 <div className={styles.model}>

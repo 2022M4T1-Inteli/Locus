@@ -2,12 +2,12 @@ import { Banner } from '../components/Banner';
 import styles from './LoginPage.module.css';
 import { LocusButton } from '../components/LocusButton';
 import IconButton from '@mui/material/IconButton';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
 import InputAdornment from '@mui/material/InputAdornment';
 import Input from '@mui/material/Input';
 import React, { useState } from 'react';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import axios from 'axios';
 

@@ -5,8 +5,6 @@ import styles from './DashboardPage.module.css';
 import { SideBar } from '../components/SideBar.jsx';
 
 export default function DashboardPage() {
-
-
     return (
         <div className={styles.dashboardPage}>
             <SideBar />
