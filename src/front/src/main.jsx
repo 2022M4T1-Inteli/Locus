@@ -5,7 +5,9 @@ import {
     RouterProvider,
     Route,
     redirect,
+    useNavigate,
 } from 'react-router-dom';
+
 import ErrorPage from './pages/ErrorPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';

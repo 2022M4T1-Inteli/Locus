@@ -1,9 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Gallery.module.css';
 import Device from '../assets/device.svg';
 import { Modal } from './Modal';
 import { LocusButton } from './LocusButton';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function mock_macandress() {
     return 'XX:XX:XX:XX:XX:XX'.replace(/X/g, function () {
@@ -12,7 +13,10 @@ function mock_macandress() {
 }
 
 export function Gallery() {
-    const [count, setCount] = useState([
+    const navigate = useNavigate();
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const [devices, setDevices] = useState([
         {
             mac_str: mock_macandress(),
             battery_percent: 100,
@@ -93,9 +97,76 @@ export function Gallery() {
             battery_percent: 80,
             last_activity: 'Last activity: 2 hour ago',
         },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 90,
+            last_activity: 'Last activity: 7 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 23,
+            last_activity: 'Last activity: 1 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 0,
+            last_activity: 'Last activity: 4 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 80,
+            last_activity: 'Last activity: 2 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 90,
+            last_activity: 'Last activity: 7 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 23,
+            last_activity: 'Last activity: 1 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 0,
+            last_activity: 'Last activity: 4 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 80,
+            last_activity: 'Last activity: 2 hour ago',
+        },
     ]);
 
-    const [modalOpen, setModalOpen] = useState(false);
+    //function updateDevices() {
+    //    axios
+    //        .get('http://0.0.0.0/devices')
+    //        .then(function (response) {
+    //            console.log(response);
+    //            if (response.status === 200) {
+    //                let devices_data = response.data.map((device) => {
+    //                    return {
+    //                        mac_str: device.macaddress,
+    //                        battery_percent: device.battery_level,
+    //                        last_activity: new Date().toLocaleString(),
+    //                    };
+    //                });
+    //                console.log(devices_data);
+    //                setDevices(devices_data);
+    //            }
+    //        })
+    //        .catch(function (error) {
+    //            if (error.response.status === 401) {
+    //                navigate('/login');
+    //            }
+    //        });
+    //}
+
+    //useEffect(() => {
+    //    updateDevices();
+    //}, []);
+
     return (
         <div className={styles.root}>
             {modalOpen && <Modal setOpenModal={setModalOpen} />}
@@ -113,7 +184,7 @@ export function Gallery() {
             </div>
             <div className={styles.box}>
                 <div className={styles.card}>
-                    {count.map((item) => {
+                    {devices.map((item) => {
                         return <DeviceCard {...item} />;
                     })}
                 </div>
@@ -125,6 +196,10 @@ export function Gallery() {
 const DeviceCard = ({ mac_str, battery_percent, last_activity }) => {
     const MIN_BATTERY_WIDTH = 0;
     const MAX_BATTERY_WIDTH = 64;
+
+    if (battery_percent == null) {
+        battery_percent = 100;
+    }
 
     const batteryWidth = (battery_percent / 100) * MAX_BATTERY_WIDTH;
 

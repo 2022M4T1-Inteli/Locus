@@ -5,15 +5,15 @@ import { useEffect, useState } from 'react';
 export function Navbar({ buildings }) {
     const [buildingsFilters, setBuildingsFilters] = useState([]);
 
-    useEffect(() => {
-        const defaultFilter = 'Todos';
+    //useEffect(() => {
+    //    const defaultFilter = 'Todos';
 
-        setBuildingsFilters([defaultFilter, ...buildings]);
-    });
+    //    setBuildingsFilters([defaultFilter, ...buildings]);
+    //});
     return (
         <div className={styles.navbar}>
             <div className={styles.divButton}>
-                {buildingsFilters.map((elem) => {
+                {buildings.map((elem) => {
                     return <button className={styles.button}>{elem}</button>;
                 })}
             </div>

@@ -4,6 +4,8 @@ import { Navbar } from '../components/Navbar';
 import styles from './DashboardPage.module.css';
 
 export default function DashboardPage() {
+
+
     return (
         <div className={styles.dashboardPage}>
             <Dash />
