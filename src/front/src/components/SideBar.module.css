@@ -3,7 +3,7 @@
     border-radius: 8px;
     overflow: hidden;
     width: 20rem;
-    margin-top: 2rem;
+    border: 1px solid var(--white);
 }
 
 .cover {
@@ -26,17 +26,22 @@
 
 .sidebar footer {
     margin-top: 4rem;
-    margin-right: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0rem;
     padding: 1.5rem 2rem 2rem;
 }
 
 .sidebar footer a {
     background: transparent;
-    height: 50px;
-    padding: 0 1.5rem;
+    /* height: 50px; */
+    padding: 1.5rem;
     font-weight: bold;
     font-size: 1.25rem;
-    display: block;
+    text-align: center;
+    /* display: block; */
     text-decoration: none;
     color: var(--white);
 

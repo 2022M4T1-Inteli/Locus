@@ -1,8 +1,7 @@
 .display {
     display: flex;
     justify-content: space-between;
-    margin-inline: 1rem;
-    margin-top: 0.5rem;
+    margin: 2rem;
 }
 
 .text {
