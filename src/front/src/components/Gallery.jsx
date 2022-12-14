@@ -19,8 +19,13 @@ export function Gallery() {
     const [devices, setDevices] = useState([
         {
             mac_str: mock_macandress(),
-            battery_percent: 60,
+            battery_percent: 20,
             last_activity: 'Last activity: 1 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 70,
+            last_activity: 'Last activity: 6 hour ago',
         },
         {
             mac_str: mock_macandress(),
