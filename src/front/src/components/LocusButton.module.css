@@ -17,5 +17,10 @@
 }
 
 .button:hover {
-    background-position: right center;
+    background-image: linear-gradient(
+        to right,
+        rgba(237, 186, 255, 1) 0%,
+        rgba(197, 222, 255, 1) 50%,
+        rgba(161, 255, 255, 1) 100%
+    );
 }

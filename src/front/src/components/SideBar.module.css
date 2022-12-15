@@ -35,13 +35,35 @@
 
 .sidebar footer a {
     background: transparent;
-    padding: 1.8rem;
+    padding: 1.2rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-align: center;
     text-decoration: none;
     color: var(--white);
     display: block;
     align-items: flex;
     justify-content: center;
+}
+
+/* .sidebar a:hover {
+    background-image: linear-gradient(
+        to right,
+        rgba(237, 186, 255, 1) 0%,
+        rgba(197, 222, 255, 1) 50%,
+        rgba(161, 255, 255, 1) 100%
+    );
+    color: var(--black-300);
+} */
+
+.sidebar footer a:focus {
+    background-image: linear-gradient(
+        to right,
+        rgba(237, 186, 255, 1) 0%,
+        rgba(197, 222, 255, 1) 50%,
+        rgba(161, 255, 255, 1) 100%
+    );
+    color: var(--black-300);
 }
