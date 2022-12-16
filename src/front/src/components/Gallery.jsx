@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Gallery.module.css';
 import Device from '../assets/device.svg';
+import Configs from '../assets/config.svg';
 import { Modal } from './Modal';
 import { LocusButton } from './LocusButton';
 import { useNavigate } from 'react-router-dom';
@@ -210,14 +211,21 @@ const DeviceCard = ({ mac_str, battery_percent, last_activity }) => {
 
     return (
         <div className={styles.deviceBox}>
-            <a href="https://ipfs.io/ipfs/QmYFHiHnjosanx9BkjUyk3oD3w26bzfiodsgWQGrQjWCUi/">
-                <img
-                    src={Device}
-                    alt="Device image"
-                    width={40}
-                    className={styles.imageDeviceBox}
-                />
-            </a>
+            <div className={styles.alignRow}>
+                <div>
+                    <button onClick={() => console.log('está tudo bem')}>
+                        <img
+                            src={Configs}
+                            alt="Configuration image"
+                            width={40}
+                        />
+                    </button>
+                    <button>
+                        <img src={Device} alt="Device image" width={40} />
+                    </button>
+                </div>
+                <p>Sala 3456B</p>
+            </div>
             <div className={styles.status}>
                 <div className={styles.model}>
                     <h3>{mac_str}</h3>
