@@ -7,7 +7,7 @@ export function Dash() {
         <div className={styles.display}>
             <h1 className={styles.text}>Dashboard</h1>
             <div className={styles.help}>
-                <a href="https://ipfs.io/ipfs/QmYFHiHnjosanx9BkjUyk3oD3w26bzfiodsgWQGrQjWCUi/">
+                <a href="https://ipfs.io/ipfs/QmcofeTceQskjLTT1epmtWSXRvRJgDPpWHbyBXXs4fKuL6">
                     <img src={HelpIcon} alt="Help Icon" />
                 </a>
             </div>
