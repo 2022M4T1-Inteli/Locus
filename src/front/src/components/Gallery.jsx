@@ -17,161 +17,34 @@ export function Gallery() {
     const navigate = useNavigate();
     const [modalOpen, setModalOpen] = useState(false);
 
-    const [devices, setDevices] = useState([
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 20,
-            last_activity: 'Last activity: 1 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 70,
-            last_activity: 'Last activity: 6 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 70,
-            last_activity: 'Last activity: 6 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 40,
-            last_activity: 'Last activity: 6 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 90,
-            last_activity: 'Last activity: 7 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 23,
-            last_activity: 'Last activity: 1 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 0,
-            last_activity: 'Last activity: 4 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 80,
-            last_activity: 'Last activity: 2 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 50,
-            last_activity: 'Last activity: 5 days ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 99,
-            last_activity: 'Last activity: 3 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 100,
-            last_activity: 'Last activity: 1 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 67,
-            last_activity: 'Last activity: 6 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 40,
-            last_activity: 'Last activity: 6 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 90,
-            last_activity: 'Last activity: 7 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 23,
-            last_activity: 'Last activity: 1 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 0,
-            last_activity: 'Last activity: 4 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 80,
-            last_activity: 'Last activity: 2 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 90,
-            last_activity: 'Last activity: 7 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 23,
-            last_activity: 'Last activity: 1 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 0,
-            last_activity: 'Last activity: 4 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 80,
-            last_activity: 'Last activity: 2 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 90,
-            last_activity: 'Last activity: 7 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 23,
-            last_activity: 'Last activity: 1 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 0,
-            last_activity: 'Last activity: 4 hour ago',
-        },
-        {
-            mac_str: mock_macandress(),
-            battery_percent: 80,
-            last_activity: 'Last activity: 2 hour ago',
-        },
-    ]);
+    const [devices, setDevices] = useState([]);
 
-    //function updateDevices() {
-    //    axios
-    //        .get('http://0.0.0.0/devices')
-    //        .then(function (response) {
-    //            console.log(response);
-    //            if (response.status === 200) {
-    //                let devices_data = response.data.map((device) => {
-    //                    return {
-    //                        mac_str: device.macaddress,
-    //                        battery_percent: device.battery_level,
-    //                        last_activity: new Date().toLocaleString(),
-    //                    };
-    //                });
-    //                console.log(devices_data);
-    //                setDevices(devices_data);
-    //            }
-    //        })
-    //        .catch(function (error) {
-    //            if (error.response.status === 401) {
-    //                navigate('/login');
-    //            }
-    //        });
-    //}
+    function updateDevices() {
+        axios
+            .get('http://10.128.65.234:3131/api/device/get_all')
+            .then(function (response) {
+                console.log(response);
+                if (response.status === 200) {
+                    let devices_data = response.data;
 
-    //useEffect(() => {
-    //    updateDevices();
-    //}, []);
+                    setDevices(devices_data);
+                }
+            })
+            .catch(function (error) {
+                if (error.status === 401) {
+                    navigate('/login');
+                }
+            });
+    }
+
+    useEffect(() => {
+        updateDevices();
+        const interval = setInterval(() => {
+            updateDevices();
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <div className={styles.root}>
@@ -199,12 +72,28 @@ export function Gallery() {
     );
 }
 
-const DeviceCard = ({ mac_str, battery_percent, last_activity }) => {
+const buzzer = (mac_str) => {
+    axios.post('http://10.128.65.234:3131/api/device/locate', {
+        mac_str: mac_str,
+    });
+};
+
+const DeviceCard = ({
+    mac_str,
+    name,
+    battery_percent,
+    last_activity,
+    room,
+}) => {
     const MIN_BATTERY_WIDTH = 0;
     const MAX_BATTERY_WIDTH = 64;
 
     if (battery_percent == null) {
         battery_percent = 100;
+    }
+
+    if (room == null) {
+        room = '?	';
     }
 
     const batteryWidth = (battery_percent / 100) * MAX_BATTERY_WIDTH;
@@ -220,22 +109,22 @@ const DeviceCard = ({ mac_str, battery_percent, last_activity }) => {
                             width={40}
                         />
                     </button>
-                    <button>
-                        <img src={Device} alt="Device image" width={40} />
+                    <button onClick={() => buzzer(mac_str)}>
+                        <img src={Device} alt="Buzzer image" width={40} />
                     </button>
                 </div>
-                <p>Sala 3456B</p>
+                <p>Sala {room}</p>
             </div>
             <div className={styles.status}>
                 <div className={styles.model}>
-                    <h3>{mac_str}</h3>
+                    <h3>{name}</h3>
                     <h4 className={styles.lastActivity}>{last_activity}</h4>
                 </div>
                 <div className={styles.batteryBox}>
                     <h3 className={styles.gradient}>{battery_percent}%</h3>
                     <div
                         className={styles.bar}
-                        style={{ width: `${battery_percent}%` }}
+                        style={{ width: batteryWidth }}
                     ></div>
                 </div>
             </div>
