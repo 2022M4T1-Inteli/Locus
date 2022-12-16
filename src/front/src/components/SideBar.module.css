@@ -40,10 +40,19 @@
     border-radius: 0.5rem;
     font-weight: bold;
     font-size: 1.1rem;
+    flex-direction: row;
     text-align: center;
+    width: 9rem;
     text-decoration: none;
     color: var(--white);
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar footer img {
+    display: flex;
+    margin-right: 0.5rem;
     align-items: flex;
     justify-content: center;
 }

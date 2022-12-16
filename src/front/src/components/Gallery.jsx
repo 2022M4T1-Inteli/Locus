@@ -210,13 +210,14 @@ const DeviceCard = ({ mac_str, battery_percent, last_activity }) => {
 
     return (
         <div className={styles.deviceBox}>
-            <img
-                src={Device}
-                alt="Device image"
-                width={40}
-                className={styles.imageDeviceBox}
-            />
-
+            <a href="https://ipfs.io/ipfs/QmYFHiHnjosanx9BkjUyk3oD3w26bzfiodsgWQGrQjWCUi/">
+                <img
+                    src={Device}
+                    alt="Device image"
+                    width={40}
+                    className={styles.imageDeviceBox}
+                />
+            </a>
             <div className={styles.status}>
                 <div className={styles.model}>
                     <h3>{mac_str}</h3>

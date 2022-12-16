@@ -76,7 +76,6 @@
     width: fit-content;
     width: 200px;
     height: 40px;
-    cursor: pointer;
     color: var(--white);
     background-color: -webkit-linear-gradient(
         rgba(237, 186, 255, 1) 0%,
@@ -125,7 +124,6 @@
 
 .deviceBox {
     padding: 1.25rem;
-    cursor: pointer;
 }
 
 .deviceBox:hover {
