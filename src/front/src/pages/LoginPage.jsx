@@ -37,7 +37,7 @@ export default function LoginPage() {
         e.preventDefault();
 
         axios
-            .post('http://localhost:3131/api/auth/login', {
+            .post('http://10.128.65.234:3131/api/auth/login', {
                 email: email,
                 password: values.password,
             })

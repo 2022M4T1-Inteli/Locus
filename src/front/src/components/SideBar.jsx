@@ -5,7 +5,9 @@ export function SideBar() {
     return (
         <aside className={styles.sidebar}>
             <footer>
-                <a href="#">Geral</a>
+                <a href="#" className={styles.mainATag}>
+                    Geral
+                </a>
                 <a href="#">Prédio 02</a>
                 <a href="#">Prédio 03</a>
                 <a href="#">Prédio 04</a>
