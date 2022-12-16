@@ -48,15 +48,15 @@ Dentre os arquivos presentes na raiz do projeto, definem-se:
 
 ## 💻 Configuração para Desenvolvimento
 
-Se aplicável, descreva instruções para configuração do ambiente para desenvolvimento (frontend e/ou backend)
+Vá na pasta documentos, nela estará a versão do Manual de Instruções Sprint 5, e neste manual contém todas as informações necessárias para a configuração do dispositivo IoT e para a utilização da aplicação web.
 
 
 ## 🗃 Histórico de lançamentos
 
 A cada atualização os detalhes devem ser lançados aqui.
 
-* 0.0.1 - 19/10/2022
-    * Descrição
+* 0.0.1 - 15/12/2022
+    * Última versão da documentação
 
 
 ## 📋 Licença/License
@@ -69,4 +69,9 @@ Este projeto está licenciado nos termos da licença MIT
 
 Aqui estão as referências usadas no projeto.
 
-1. 
+1. <https://www.typescriptlang.org/>
+2. <https://www.prisma.io/>
+3. <https://redis.io/>
+4. <https://expressjs.com/>
+5. <https://reactjs.org/>
+6. <https://www.arduino.cc/en/software>
