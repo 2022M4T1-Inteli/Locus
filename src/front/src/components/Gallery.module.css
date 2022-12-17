@@ -1,7 +1,6 @@
 .model > h3 {
     margin-top: 1.5rem;
     font-size: 1rem;
-    font-weight: 300;
 }
 
 .status {
@@ -27,15 +26,13 @@
 
 .titleTop {
     margin-right: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .containerSearch {
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 1rem;
-    margin-top: 0;
 }
 
 .search {
@@ -45,7 +42,7 @@
     padding: 5px 20px;
     background-color: var(--gray-300);
     width: 70%;
-    height: 3rem;
+    height: 2.25rem;
     margin: 0.5rem;
     border-radius: 10px;
     transition: 0.3s all;
@@ -65,10 +62,8 @@
 .search > input {
     border: none;
     outline: none;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     font-weight: 300;
-    height: 100%;
-    width: 100%;
     background-color: transparent;
     color: var(--white);
 }
@@ -120,48 +115,13 @@
 
 .status > div > h4 {
     margin-top: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     opacity: 0.5;
 }
 
 .deviceBox {
     padding: 1.5rem;
-}
-
-.deviceBox button {
-    border: none;
-}
-
-.deviceBox button img{
-    margin-right: 0.5rem !important;
-}
-
-.alignRow {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bolder;
-    color: var(--white);
-}
-
-.alignRow p {
-    background: -webkit-linear-gradient(
-        235deg,
-        rgba(237, 186, 255, 1) 0%,
-        rgba(197, 222, 255, 1) 50%,
-        rgba(161, 255, 255, 1) 100%
-    );
-    border-radius: 0.4rem;
-    padding: 0.5rem;
-    height: 2rem;
-    width: 5.5rem;
-    font-size: 0.8rem;
-    font-weight: bolder;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--black-300);
-    
+    cursor: pointer;
 }
 
 .deviceBox:hover {

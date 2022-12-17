@@ -1,88 +1,29 @@
-.sidebar {
-    background : var(--black-300);
-    border-radius: 8px;
-    overflow: hidden;
-    width: 20rem;
-}
-
-.cover {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-}
-
-.profile {
+.display {
+    background-color: var(--black-300);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.avatar {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 8px;
-}
-
-.sidebar footer {
-    margin-top: 4rem;
+    height: 100%;
+    width: 15%;
+    border-radius: 0 10px 10px 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-right: 0rem;
-    padding: 1.5rem 2rem 2rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* border: 2px solid var(--gray-200); */
 }
 
-.sidebar footer a {
-    background: transparent;
-    padding: 1.2rem;
-    margin: 1rem;
-    border-radius: 0.5rem;
-    font-weight: bold;
-    font-size: 1.1rem;
-    flex-direction: row;
-    text-align: center;
-    width: 9rem;
-    text-decoration: none;
-    color: var(--white);
+.selected {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 5px;
+    border-radius: 0 10px 10px 0;
+    background-color: var(--white);
+    align-items: flex-start;
 }
 
-.sidebar footer img {
-    display: flex;
-    margin-right: 0.5rem;
-    align-items: flex;
-    justify-content: center;
+.icon {
+    margin-top: 0.15rem;
+    margin-left: 0.5rem;
+    padding: 1rem;
 }
 
-/* .sidebar a:hover {
-    background-image: linear-gradient(
-        to right,
-        rgba(237, 186, 255, 1) 0%,
-        rgba(197, 222, 255, 1) 50%,
-        rgba(161, 255, 255, 1) 100%
-    );
-    color: var(--black-300);
-} */
-/*
-.sidebar footer a:focus {
-    background-image: linear-gradient(
-        to right,
-        rgba(237, 186, 255, 1) 0%,
-        rgba(197, 222, 255, 1) 50%,
-        rgba(161, 255, 255, 1) 100%
-    );
-    color: var(--black-300);
-}*/
-
-.mainATag{
-	background-image: linear-gradient(
-        to right,
-        rgba(237, 186, 255, 1) 0%,
-        rgba(197, 222, 255, 1) 50%,
-        rgba(161, 255, 255, 1) 100%
-    ) !important;
-    color: var(--black-300) !important;
+.options {
+    background-color: var(--black-300);
 }

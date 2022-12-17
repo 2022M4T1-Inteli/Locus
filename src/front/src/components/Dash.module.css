@@ -1,18 +1,28 @@
 .display {
     display: flex;
     justify-content: space-between;
-    margin: 2rem;
-    width: 96%;
+    margin-inline: 1rem;
+    margin-top: 0.5rem;
 }
 
 .text {
     font-family: 'Inter', sans-serif;
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: var(--white);
     text-align: center;
     padding-top: 5px;
+
 }
 
 .help {
     margin-top: 5px;
+    position: relative;
+}
+
+.buttonTheme {
+    margin-right: 10px;
+    font-size: 1rem;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
 }
