@@ -4,13 +4,31 @@
     --gray-300: #252525;
     --white: #ffffff;
     --grad-100: #edbaff;
-    --grad-200: #333333;
     --black-100: #1a1a1a;
     --black-300: black;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.87);
+    display: flex;
+    align-items: space-between;
+    display: flex;
+    /* min-width: 100vw; */
+    min-height: 100vh;
+}
+
+.dark-mode:root {
+    --gray-100: #bebebe;
+    --gray-200: #c0c0c0;
+    --gray-300: #9e9c9c;
+    --white: #000000;
+    --grad-100: #edbaff;
+    --black-100: #f7f7f7;
+    --black-300: rgb(255, 255, 255);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(53, 53, 53, 0.87);
     display: flex;
     align-items: space-between;
     display: flex;
@@ -47,5 +65,4 @@ button {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-user-drag: none;
 }

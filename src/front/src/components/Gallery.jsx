@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import styles from './Gallery.module.css';
 import Device from '../assets/device.svg';
-import Configs from '../assets/config.svg';
 import { Modal } from './Modal';
 import { LocusButton } from './LocusButton';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 function mock_macandress() {
     return 'XX:XX:XX:XX:XX:XX'.replace(/X/g, function () {
@@ -14,38 +12,90 @@ function mock_macandress() {
 }
 
 export function Gallery() {
-    const navigate = useNavigate();
+    const [count, setCount] = useState([
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 100,
+            last_activity: 'Last activity: 1 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 67,
+            last_activity: 'Last activity: 6 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 40,
+            last_activity: 'Last activity: 6 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 90,
+            last_activity: 'Last activity: 7 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 23,
+            last_activity: 'Last activity: 1 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 0,
+            last_activity: 'Last activity: 4 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 80,
+            last_activity: 'Last activity: 2 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 50,
+            last_activity: 'Last activity: 5 days ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 99,
+            last_activity: 'Last activity: 3 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 100,
+            last_activity: 'Last activity: 1 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 67,
+            last_activity: 'Last activity: 6 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 40,
+            last_activity: 'Last activity: 6 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 90,
+            last_activity: 'Last activity: 7 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 23,
+            last_activity: 'Last activity: 1 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 0,
+            last_activity: 'Last activity: 4 hour ago',
+        },
+        {
+            mac_str: mock_macandress(),
+            battery_percent: 80,
+            last_activity: 'Last activity: 2 hour ago',
+        },
+    ]);
+
     const [modalOpen, setModalOpen] = useState(false);
-
-    const [devices, setDevices] = useState([]);
-
-    function updateDevices() {
-        axios
-            .get('http://10.128.65.234:3131/api/device/get_all')
-            .then(function (response) {
-                console.log(response);
-                if (response.status === 200) {
-                    let devices_data = response.data;
-
-                    setDevices(devices_data);
-                }
-            })
-            .catch(function (error) {
-                if (error.status === 401) {
-                    navigate('/login');
-                }
-            });
-    }
-
-    useEffect(() => {
-        updateDevices();
-        const interval = setInterval(() => {
-            updateDevices();
-        }, 2000);
-
-        return () => clearInterval(interval);
-    }, []);
-
     return (
         <div className={styles.root}>
             {modalOpen && <Modal setOpenModal={setModalOpen} />}
@@ -63,7 +113,7 @@ export function Gallery() {
             </div>
             <div className={styles.box}>
                 <div className={styles.card}>
-                    {devices.map((item) => {
+                    {count.map((item) => {
                         return <DeviceCard {...item} />;
                     })}
                 </div>
@@ -72,59 +122,26 @@ export function Gallery() {
     );
 }
 
-const buzzer = (mac_str) => {
-    axios.post('http://10.128.65.234:3131/api/device/locate', {
-        mac_str: mac_str,
-    });
-};
-
-const DeviceCard = ({
-    mac_str,
-    name,
-    battery_percent,
-    last_activity,
-    room,
-}) => {
+const DeviceCard = ({ mac_str, battery_percent, last_activity }) => {
     const MIN_BATTERY_WIDTH = 0;
     const MAX_BATTERY_WIDTH = 64;
-
-    if (battery_percent == null) {
-        battery_percent = 100;
-    }
-
-    if (room == null) {
-        room = '?	';
-    }
 
     const batteryWidth = (battery_percent / 100) * MAX_BATTERY_WIDTH;
 
     return (
         <div className={styles.deviceBox}>
-            <div className={styles.alignRow}>
-                <div>
-                    <button onClick={() => console.log('está tudo bem')}>
-                        <img
-                            src={Configs}
-                            alt="Configuration image"
-                            width={40}
-                        />
-                    </button>
-                    <button onClick={() => buzzer(mac_str)}>
-                        <img src={Device} alt="Buzzer image" width={40} />
-                    </button>
-                </div>
-                <p>Sala {room}</p>
-            </div>
+            <img src={Device} alt="Device image" width={40} />
+
             <div className={styles.status}>
                 <div className={styles.model}>
-                    <h3>{name}</h3>
+                    <h3>{mac_str}</h3>
                     <h4 className={styles.lastActivity}>{last_activity}</h4>
                 </div>
                 <div className={styles.batteryBox}>
                     <h3 className={styles.gradient}>{battery_percent}%</h3>
                     <div
                         className={styles.bar}
-                        style={{ width: batteryWidth }}
+                        style={{ width: `${battery_percent}%` }}
                     ></div>
                 </div>
             </div>
