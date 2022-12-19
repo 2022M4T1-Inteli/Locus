@@ -17,6 +17,7 @@
 	"dependencies": {
 		"@base2/pretty-print-object": "^1.0.2",
 		"@prisma/client": "^4.5.0",
+		"@types/ws": "^8.5.3",
 		"bcrypt": "^5.1.0",
 		"bull": "^4.10.1",
 		"colors": "^1.4.0",
@@ -35,7 +36,9 @@
 		"pg-hstore": "^2.3.4",
 		"redis": "^4.5.0",
 		"reflect-metadata": "^0.1.13",
-		"socket.io": "^4.5.3"
+		"socket.io": "^4.5.3",
+		"websocket": "^1.0.34",
+		"ws": "^8.11.0"
 	},
 	"devDependencies": {
 		"@types/bcrypt": "^5.0.0",

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Arduino.h>
+#include <ArduinoJson.h>
 #include <BLEAdvertisedDevice.h>
 #include <BLEDevice.h>
 #include <BLEScan.h>
@@ -17,8 +18,20 @@ using namespace std;
 struct Device {
 	String name;
 	String address;
-	float batteryLevel;
+	int batteryLevel;
 	int rssi;
+
+	JsonObject to_json() {
+		StaticJsonDocument<200> doc;
+		doc["name"] = name;
+		doc["macaddress"] = address;
+		doc["battery_level"] = batteryLevel;
+		String rssi_string = String(float(rssi), 2);
+		doc["rssi"] = rssi_string;
+
+		JsonObject output = doc.as<JsonObject>();
+		return output;
+	}
 };
 
 class Scan {
@@ -29,6 +42,7 @@ public:
 
 	void scan();
 	void onResult(BLEAdvertisedDevice advertisedDevice);
+	void setCommandCaracteristicToMacAddress(String macAddress);
 
 	vector<Device> devices;
 

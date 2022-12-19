@@ -29,7 +29,6 @@ void Scan::onResult(BLEAdvertisedDevice advertisedDevice) {
 		Device device;
 
 		device.address = advertisedDevice.getAddress().toString().c_str();
-		device.name = advertisedDevice.getName().c_str();
 		device.rssi = advertisedDevice.getRSSI();
 		Console::info("\tDevice rssi: %d\n", advertisedDevice.getRSSI());
 
@@ -45,11 +44,19 @@ void Scan::onResult(BLEAdvertisedDevice advertisedDevice) {
 		}
 
 		BLERemoteCharacteristic* pRemoteBatteryCharacteristic = pRemoteService->getCharacteristic(BATTERY_CHARACTERISTIC_UUID);
+		BLERemoteCharacteristic* pRemoteIdentifierCharacteristic =
+			pRemoteService->getCharacteristic(IDENTIFIER_CHARACTERISTIC_UUID);
 
 		if (pRemoteBatteryCharacteristic != nullptr && pRemoteBatteryCharacteristic->canRead()) {
 			float value = pRemoteBatteryCharacteristic->readFloat();
 			Console::info("Battery value: %s\n", String(value));
 			device.batteryLevel = value;
+		}
+
+		if (pRemoteIdentifierCharacteristic != nullptr && pRemoteIdentifierCharacteristic->canRead()) {
+			std::string value = pRemoteIdentifierCharacteristic->readValue();
+			Console::info("Identifier value: %s\n", value.c_str());
+			device.name = value.c_str();
 		}
 
 		pClient->disconnect();
@@ -70,4 +77,25 @@ void Scan::scan() {
 	}
 
 	this->m_pBLEScan->clearResults();
+}
+
+void Scan::setCommandCaracteristicToMacAddress(String macAddress) {
+	BLEClient* pClient = BLEDevice::createClient();
+
+	pClient->connect(BLEAddress(macAddress.c_str()));
+
+	BLERemoteService* pRemoteService = pClient->getService(LOCUS_SERVICE_UUID);
+
+	if (pRemoteService == nullptr) {
+		pClient->disconnect();
+		return;
+	}
+
+	BLERemoteCharacteristic* pRemoteCommandCharacteristic = pRemoteService->getCharacteristic(REQUEST_CHARACTERISTIC_UUID);
+
+	if (pRemoteCommandCharacteristic != nullptr && pRemoteCommandCharacteristic->canWrite()) {
+		pRemoteCommandCharacteristic->writeValue("2");
+	}
+
+	pClient->disconnect();
 }

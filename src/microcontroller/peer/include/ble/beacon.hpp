@@ -18,14 +18,22 @@ public:
 	~Beacon();
 
 	void setBatteryValue(float value);
+
 	String getResquestValue();
 	void resetResquestValue();
+
+	String getIdentifierValue();
+
+	String getCurrentIdentifier();
+	void updateCurrentIdentifier(String identifier);
 
 private:
 	BLEServer* m_pServer;
 	BLEService* m_pService;
 	BLECharacteristic* m_pCharacteristicBattery;
 	BLECharacteristic* m_pCharacteristicResquest;
+	BLECharacteristic* m_pCharacteristicIdentifier;
+
 	BLEAdvertising* m_pAdvertising;
 
 	static Beacon* m_pInstance;

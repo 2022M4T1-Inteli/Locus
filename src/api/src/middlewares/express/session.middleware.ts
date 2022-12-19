@@ -5,11 +5,12 @@ import Redis from '@services/redis.service';
 import connectRedis from 'connect-redis';
 
 class AuthenticationMiddleware extends Middleware {
+	public local_session: any = undefined;
+
 	setup(app: Express): void {
 		const RedisStore = connectRedis(session);
-
-		app.use(
-			session({
+		if (this.local_session === undefined) {
+			this.local_session = session({
 				secret: process.env.SESSION_SECRET || 'secretdev',
 				store: new RedisStore({ client: Redis }),
 				resave: false,
@@ -19,9 +20,12 @@ class AuthenticationMiddleware extends Middleware {
 					httpOnly: true,
 					sameSite: 'strict',
 				},
-			}),
-		);
+			});
+		}
+		app.use(this.local_session);
 	}
 }
 
-export default new AuthenticationMiddleware();
+const authenticationMiddleware = new AuthenticationMiddleware();
+
+export default authenticationMiddleware;
