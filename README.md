@@ -47,7 +47,7 @@ Um guia para a execução desse projeto pode ser encontrado no conteúdo do docu
 
 Se preferir, também é possível acessá-lo a partir do seguinte link:
 
-https://github.com/2022M4T1-Inteli/Projeto5/blob/main/documentos/T1_G5_V5_Instruction_Manual.pdf
+https://github.com/2022M4T1-Inteli/Locus/blob/main/documentos/T1_G5_V5_Instruction_Manual.pdf
 
 ## 📋 Licença/License
 
